@@ -1,0 +1,14 @@
+
+<body>
+    <h1>Create a new user</h1>
+
+    <%= form_with model: user do |form| %>
+        <div>
+            <%= form.label :username %><br>
+            <%= form.text_field :username %>
+
+            <%= form.submit %>
+        </div>
+    <% end %>
+
+</body>
