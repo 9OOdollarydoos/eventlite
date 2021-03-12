@@ -11,6 +11,21 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <!-- flash message -->
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <nav>
+    <p>EventLite</p>
+    <%= link_to "Home", root_path %>
+    <%= link_to "Sign In", new_session_path %>
+    <%= link_to "New User", new_user_path %>
+
+  </nav>
+
+
+  <%= yield %>
+
   </body>
 </html>

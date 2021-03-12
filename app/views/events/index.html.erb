@@ -1,0 +1,19 @@
+<h1>Site Index</h1>
+
+<ul>
+  </li><%= link_to "create new event", new_event_path %></li>
+</ul>
+
+<p>placeholder for list of events</p>
+
+
+<!-- create a list of all events -->
+<ul>
+  <% @events.each do |event| %>
+    <li><%= link_to event.name, event %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <li>add functions to edit, and destroy users</li>
+</ul>
