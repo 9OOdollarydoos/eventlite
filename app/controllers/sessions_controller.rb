@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find_by(username: params[:username])
+    user = User.find_by(username: session_params[:username])
     if user
       session[:user_id] = user.id
       redirect_to root_path, notice: "Logged in"
@@ -21,9 +21,8 @@ class SessionsController < ApplicationController
   
   private
 
-  #strong params not required because just saving cookie
-  #def session_params
-  #  params.require(:user).permit(:username)
-  #end
+  def session_params
+    params.permit(:username)
+  end
 
 end

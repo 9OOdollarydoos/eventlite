@@ -1,18 +1,18 @@
 class EventsController < ApplicationController
-  before_action :require_sign_in, #:except [:index, :show]
+  before_action :require_sign_in, only: [:new, :create]
 
   def index
     @events = Event.all
   end
 
   def new
-    @event = current_user.event.new
+    @event = current_user.hosted_events.build
   end
 
   def create
-    @event = current_user.events.new(event_params)
+    @event = current_user.hosted_events.build(event_params)
     if @event.save
-      redirect_to root_path, notice: 'Event created successfully.'
+      redirect_to @event, notice: "Event create successfully!"
     else
       render :new
     end

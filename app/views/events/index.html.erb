@@ -1,12 +1,12 @@
 <h1>Site Index</h1>
 
+<h2>Create an Event</h2>
 <ul>
   </li><%= link_to "create new event", new_event_path %></li>
 </ul>
 
-<p>placeholder for list of events</p>
 
-
+<h2>What's happening soon?</h2>
 <!-- create a list of all events -->
 <ul>
   <% @events.each do |event| %>
@@ -14,6 +14,7 @@
   <% end %>
 </ul>
 
+<h2>Options</h2>
 <ul>
   <li>add functions to edit, and destroy users</li>
 </ul>

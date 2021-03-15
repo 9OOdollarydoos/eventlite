@@ -1,15 +1,22 @@
 
 <h1><%= @user.username %></h1>
 
-<p>Hi <%= @user.body %>, you are currently logged in</p>
-
-<!-- create a list of all a user's events -->
+<% if current_user == @user %>
+  <p>Hi <%= @user.username %>, you are currently logged in</p>
+  <h2>Check out your events:</h2>
+<% else %>
+  <p>You are viewing <%= @user.username %>'s profile</p>
+  <h2>Check out <%= @user.username %>'s events:</h2>
+  <!-- create a list of all a user's events -->
+<% end %>
+  
 <ul>
-  <% @user.events.each do |event| %>
+  <% @user.hosted_events.each do |event| %>
     <li><%= link_to event.name, event %></li>
   <% end %>
 </ul>
-
+<br>
+<p>Placeholder:</p>
 <ul>
   <li>add functions to edit, and destroy users</li>
 </ul>

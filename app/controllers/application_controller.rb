@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :require_sign_in, :current_user
 
   def current_user
-    session[:user_id]
+    session[:user_id] ? User.find(session[:user_id]) : nil
   end
   
   def require_sign_in
