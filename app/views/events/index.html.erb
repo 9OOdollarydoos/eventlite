@@ -9,7 +9,15 @@
 <h2>What's happening soon?</h2>
 <!-- create a list of all events -->
 <ul>
-  <% @events.each do |event| %>
+  <% @events.upcoming.each do |event| %>
+    <li><%= link_to event.name, event %></li>
+  <% end %>
+</ul>
+
+<h2>Past Events</h2>
+<!-- create a list of all events -->
+<ul>
+  <% @events.previous.each do |event| %>
     <li><%= link_to event.name, event %></li>
   <% end %>
 </ul>

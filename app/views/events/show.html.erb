@@ -9,3 +9,18 @@
 
 <p>Description: <%= @event.description %></p>
 
+<!-- sign up part -->
+<p><%=link_to "Sign up to the event!", event_registrations_path(event_id: @event.id), method: :post %></p>
+
+<!-- list of attendees -->
+<% if @event.attendees.any? %>
+  <h2>Who's Coming?</h2>
+  <p>Here's everyone attending:</p>
+  <ul>
+    <% @event.attendees.each do |attendee| %>
+      <%= link_to attendee.username, attendee %>
+    <% end %>
+  </ul>
+<% end %>
+
+

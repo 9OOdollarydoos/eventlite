@@ -15,8 +15,19 @@
     <li><%= link_to event.name, event %></li>
   <% end %>
 </ul>
+
 <br>
-<p>Placeholder:</p>
+
+<h2>List of upcoming events</h2>
 <ul>
-  <li>add functions to edit, and destroy users</li>
+  <% @user.attended_events.upcoming.each do |event| %>
+    <li><%= link_to event.name, event %></li>
+  <% end %>
+</ul>
+
+<h2>List of attended events</h2>
+<ul>
+  <% @user.attended_events.previous.each do |event| %>
+    <li><%= link_to event.name, event %></li>
+  <% end %>
 </ul>
