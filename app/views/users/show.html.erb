@@ -18,6 +18,20 @@
 
 <br>
 
+<!-- list of user's invites -->
+<% if current_user == @user %>
+<% if @user.invited_events.any? %>
+  <h2>You have been invited to events!</h2>
+  <ul>
+    <% @user.invited_events.each do |event| %>
+      <li><p><%= link_to event.name, event %> <%=link_to "Accept Invite!", event_registrations_path(event_id: event.id), method: :post %></li>
+    <% end %>
+</ul>
+
+<% end %>
+<% end %>
+
+<!-- list of user's attended events -->
 <h2>List of upcoming events</h2>
 <ul>
   <% @user.attended_events.upcoming.each do |event| %>

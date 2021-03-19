@@ -9,6 +9,36 @@
 
 <p>Description: <%= @event.description %></p>
 
+<!-- invite new users part -->
+<% if current_user == @event.host %>
+  <h2>Invite people:</h2>
+  <p>...</p>
+  <%= form_with model: @invitation do |form| %>
+        <div>
+            <%= form.label :username %><br>
+            <%= form.text_field :username %><br>
+
+            <%= form.hidden_field :event_id, :value => @event.id %>
+
+            <%= form.submit %>
+        </div>
+  <% end %>
+  <br>
+<% end %>
+
+<!-- invited users part -->
+<h2>Who's Been Invited?</h2>
+<% if @event.invitees.any? %>
+  <p>Here's everyone with an invite:</p>
+  <ul>
+    <% @event.invitees.each do |invitee| %>
+      <%= link_to invitee.username, invitee %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No one has been invited yet</p>
+<% end %>
+
 <!-- sign up part -->
 <p><%=link_to "Sign up to the event!", event_registrations_path(event_id: @event.id), method: :post %></p>
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :events, only: [:new, :create, :show, :index]
   resources :event_registrations, only: [:create]
+  resources :invitations, only: [:create, :destroy]
 
   root "events#index"
 end
